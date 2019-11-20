@@ -33,6 +33,14 @@
         });
 
         $.ajax({
+          url: ' https://api.teleport.org/api/urban_areas',
+          dataType:'json',
+          method: 'GET',
+        }).then(res=> {
+          console.log(res);
+        })
+
+        $.ajax({
           url: "http://proxy.hackeryou.com",
           dataType: "json",
           method: "GET",
