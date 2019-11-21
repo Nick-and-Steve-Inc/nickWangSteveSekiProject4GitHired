@@ -1,0 +1,93 @@
+html,
+body {
+  font-size: 20px;
+  background: url(../assets/istockphoto-1097123668-1024x1024.jpg);
+}
+
+img {
+  width: 100%;
+}
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImageContainer {
+  width: 10%;
+}
+
+.jobType {
+  font-size: 0.8rem;
+  color: grey;
+  padding-bottom: 10px;
+}
+
+.imageContainer {
+  width: 50%;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  width: 50%;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.jobHeading {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.company {
+  padding-bottom: 10px;
+}
+
+li {
+  float: left;
+  width: calc(100% / 3 - 20px);
+  margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.jobsContainer {
+  border: 0.5px dotted grey;
+  padding: 0 15px;
+}
+
+.singleJobPost {
+  border-bottom: 1px solid grey;
+  height: 120px;
+  margin-top: 20px;
+}
+
+.jobsContainer .singleJobPost:last-of-type {
+  border-bottom: none;
+}
+
+.wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  max-width: 1440px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
