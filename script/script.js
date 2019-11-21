@@ -1,4 +1,5 @@
 
+
     gitHiredApp = {};
     gitHiredApp.init = () => {
       gitHiredApp.cityArray = [
@@ -73,6 +74,11 @@
     };
 
     $(document).ready(function() {
+      $('.main-carousel').flickity({
+        wrapAround: true,
+        cellAlign: 'left',
+        contain: true
+      });
       gitHiredApp.init();
       gitHiredApp.populateWithImagesAndJobs();
     });
