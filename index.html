@@ -9,10 +9,36 @@
   </head>
   <body>
     <header>
-      <form action="#">
-        <input type="text" id="searchTerm" placeholder="Search For City ..." />
-        <input type="submit" id="submit" />
-      </form>
+      <div class="wrapper">
+        <h1>GitHired!</h1>
+
+        <ul>
+          <li class="cities new-york">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+          <li class="cities toronto">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+          <li class="cities california">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+          <li class="cities chicago">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+          <li class="cities montreal">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+          <li class="cities london">
+            <h2></h2>
+            <div class="jobsContainer"></div>
+          </li>
+        </ul>
+      </div>
     </header>
 
     <script
@@ -22,44 +48,72 @@
     ></script>
 
     <script>
-      const searchTerm = $("#searchTerm");
-      const formSubmit = $("form");
-
       gitHiredApp = {};
       gitHiredApp.init = () => {
-        formSubmit.on("submit", e => {
-          e.preventDefault();
-          console.log(searchTerm.val());
-        });
+        gitHiredApp.cityArray = [
+          "new-york",
+          "toronto",
+          "california",
+          "chicago",
+          "montreal",
+          "london"
+        ];
+        gitHiredApp.cityImages = [];
 
+        gitHiredApp.teleCityBaseUrl = "https://api.teleport.org/api/urban_areas/";
+
+        gitHiredApp.githubJobBaseUrl = "https://jobs.github.com/positions.json";
+      };
+
+      gitHiredApp.teleCityAjaxCall = city => {
+        // City Api
         $.ajax({
-          url: ' https://api.teleport.org/api/urban_areas',
-          dataType:'json',
-          method: 'GET',
-        }).then(res=> {
-          console.log(res);
-        })
+          url: `${gitHiredApp.teleCityBaseUrl}slug:${city}/images`,
+          dataType: "json",
+          method: "GET"
+        }).then(res => {
+          return res.push(gitHiredApp.cityImage.photos[0].images.mobile);
+        });
+      };
 
+      gitHiredApp.githubJobsAjaxCall = cityName => {
+        let selectCityContainer = $(`.${cityName} div`);
+        // Github jobs API
         $.ajax({
           url: "http://proxy.hackeryou.com",
           dataType: "json",
           method: "GET",
           data: {
-            reqUrl: "https://jobs.github.com/positions.json",
+            reqUrl: gitHiredApp.githubJobBaseUrl,
             params: {
-              description: "",
-              location: ""
+              location: cityName
             },
             xmlToJSON: false,
             useCache: false
           }
-        }).then(function(res) {
-          console.log(res);
+        }).then(res => {
+          for (let i = 0; i < 3; i++) {
+            const renderHtml = `
+            <h3>Job Title: ${res[i].title}</h3>
+            <p>Job Type: ${res[i].type}</p>
+            <p>Company Name: ${res[i].company}</p>
+              <p><a href=${res[i].url}>Apply Here</a></p>`;
+
+            selectCityContainer.append(renderHtml);
+          }
+        });
+      };
+
+      gitHiredApp.populateWithImagesAndJobs = () => {
+        gitHiredApp.cityArray.forEach(city => {
+          gitHiredApp.teleCityAjaxCall(city);
+          gitHiredApp.githubJobsAjaxCall(city);
         });
       };
 
       $(document).ready(function() {
         gitHiredApp.init();
+        gitHiredApp.populateWithImagesAndJobs();
       });
     </script>
   </body>
