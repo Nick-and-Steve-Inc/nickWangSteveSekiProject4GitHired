@@ -31,7 +31,7 @@ gitHiredApp.teleCityAjaxCall = cityName => {
   });
 };
 
-gitHiredApp.githubJobsApiCall = (cityName) => {
+gitHiredApp.githubJobsApiCall = cityName => {
   // Github jobs API
   return $.ajax({
     url: "http://proxy.hackeryou.com",
@@ -47,7 +47,6 @@ gitHiredApp.githubJobsApiCall = (cityName) => {
     }
   });
 };
-
 
 gitHiredApp.githubJobsAjaxCall = cityName => {
   let selectCityContainer = $(`.${cityName} .jobsContainer`);
@@ -73,10 +72,30 @@ gitHiredApp.returnSelectedCityValue = () => {
     let selectedSingleCity = e.target.value;
 
     gitHiredApp.githubJobsApiCall(selectedSingleCity).then(res => {
-      console.log(res[0])
-    })
+      const renderHtml = `
+      <div class="singleJobPost"> 
+          <h3>${res[0].title}</h3>
+          <p class="jobType">${res[0].type}</p>
+          <img class="companyLogo" src=${res[0].company_logo} alt="Company logo" >
+          <p class="company">Company: ${res[0].company}</p>
+          <p class="createdAt">Company: ${res[0].created_at}</p>
+          <p><a href=${res[0].url} target="_blank">Apply Here</a></p>
+        <div/>`;
 
+      $(".jobListingsContainer").append(renderHtml);
 
+      // const renderHtml = `
+      // <div class="singleJobPost">
+      //     <h3>${res[i].title}</h3>
+      //     <p class="jobType">${res[i].type}</p>
+      //     <img class="companyLogo" src=${res[i].company_logo} alt="Company logo">
+      //     <p class="company">Company: ${res[i].company}</p>
+      //     <p class="createdAt">Company: ${res[i].created_at}</p>
+      //     <p><a href=${res[i].url} target="_blank">Apply Here</a></p>
+      //   <div/>`;
+
+      console.log(res[0]);
+    });
   });
 };
 
