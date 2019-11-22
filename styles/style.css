@@ -1,23 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato|Raleway&display=swap");
 
 html,
 body {
   font-size: 20px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
+  background: #25798e;
 }
 
 img {
   width: 100%;
 }
 
+header,
+main {
+  height: 100vh;
+}
+
 .headingContainer {
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+.citySelect {
+  width: 20%;
+  border-radius: 25px;
+  padding: 5px;
+  text-align: center;
+}
+
+.headerTop {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logoImageContainer {
-  width: 130px;
+  width: 100px;
 }
 
 .jobType {
@@ -29,7 +49,7 @@ img {
 h1,
 h2,
 h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 h1 {
@@ -47,7 +67,7 @@ h3 {
   font-weight: bold;
 }
 
-.imageContainer img{
+.imageContainer img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -69,25 +89,24 @@ li.cities {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .carousel-cell {
   height: 80vh;
+  border-radius: 25px;
+  background: #bbdef0;
+  padding-top: 20px;
 }
 
 .jobsContainer {
-  margin: 20px auto;
-  border: 0.5px dotted grey;
   padding: 0 15px;
   height: 60vh;
-  border-radius: 25px;
 }
 
 .singleJobPost {
   border-bottom: 1px solid grey;
-  /* min-height: 120px; */
-  height: 25%;
+  height: 30%;
   margin-top: 20px;
 }
 
@@ -96,7 +115,6 @@ a {
 }
 
 .wrapper {
-  background: rgba(255, 255, 255, 0.8);
   max-width: 1440px;
   width: 80%;
   margin: 0 auto;
@@ -108,14 +126,20 @@ header {
   align-items: center;
 }
 
-/* .main-carousel {
-  box-sizing: border-box;
-} */
-
 .flickity-prev-next-button.next {
   right: -50px;
 }
 
 .flickity-prev-next-button.previous {
   left: -50px;
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.cityDetails,
+.jobDetails {
+  width: 50%;
 }
