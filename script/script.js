@@ -77,12 +77,9 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
   });
 };
 
-gitHiredApp.gitTeleportCityDetails = cityName => {
-// city details call for second page
-};
+const jobListingContainer = $(".jobListingsContainer");
 
 gitHiredApp.handleOnChangeJobDetails = (selectedSingleCity) => {
-  const jobListingContainer = $(".jobListingsContainer");
 
   gitHiredApp.githubJobsReusableApiCall(selectedSingleCity).then(res => {
     for (let i = 0; i < 6; i++) {
@@ -100,7 +97,9 @@ gitHiredApp.handleOnChangeJobDetails = (selectedSingleCity) => {
 }
 
 gitHiredApp.handleOnChangeCityDetails = (selectedSingleCity) => {
-  
+  gitHiredApp.teleCityReusableApiCall(selectedSingleCity, "scores").then(res => {
+    const renderHtml
+  })
 };
 
 
@@ -112,6 +111,7 @@ gitHiredApp.returnSelectedCityValue = () => {
     jobListingContainer.html("");
     let selectedSingleCity = e.target.value;
     gitHiredApp.handleOnChangeJobDetails(selectedSingleCity);
+    gitHiredApp.handleOnChangeCityDetails(selectedSingleCity);
 
   });
 };
@@ -121,7 +121,6 @@ gitHiredApp.populateWithImagesAndJobs = () => {
     gitHiredApp.teleCityImageAjaxCall(city);
     gitHiredApp.githubJobsAjaxCall(city);
   });
-  console.log(gitHiredApp.cityImageUrlObject);
 };
 
 $(document).ready(function() {
