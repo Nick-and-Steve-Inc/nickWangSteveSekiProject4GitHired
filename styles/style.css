@@ -23,6 +23,7 @@ main {
 }
 
 .citySelect {
+  min-width: 150px;
   width: 20%;
   border-radius: 25px;
   padding: 5px;
@@ -142,4 +143,48 @@ main {
 .cityDetails,
 .jobDetails {
   width: 50%;
+}
+
+footer {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.scoreBar {
+  border: 1px solid black;
+}
+
+#backToTop {
+  position: absolute;
+  bottom: 50px;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 1000px) {
+  li.cities {
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  li.cities {
+    width: 100%;
+    text-align: center;
+  }
+
+  .singleJobPost {
+    border-bottom: none;
+  }
+
+  .singleJobPost:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 50vw;
+    padding-top: 20px;
+    border-bottom: 1px solid grey;
+  }
 }

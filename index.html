@@ -14,7 +14,7 @@
     <title>GitHired !</title>
   </head>
   <body>
-    <header>
+    <header id="home">
       <div class="wrapper">
         <div class="headerTop">
           <div class="headingContainer">
@@ -24,8 +24,15 @@
             <h1>GitHired!</h1>
           </div>
           <label aria-label="please select a city" for="citySelect"></label>
-          <select tabindex="1" class="citySelect" name="citySelect" id="citySelect">
-            <option value="" selected='selected' disabled> Please Select a City</option>
+          <select
+            tabindex="1"
+            class="citySelect"
+            name="citySelect"
+            id="citySelect"
+          >
+            <option value="" selected="selected" disabled>
+              Select a City</option
+            >
             <option value="new-york">New York</option>
             <option value="toronto">Toronto</option>
             <option value="los-angeles">Los Angeles</option>
@@ -83,30 +90,35 @@
       </div>
     </header>
 
-<main>
-  <section class="cityDetails">
-<h2>City Details</h2>
-<div></div>
+    <main id="main">
+      <section class="cityDetails">
+        <div class="wrapper">
+          <h2>City Details</h2>
+          <div class="cityDetailsContainer"></div>
+          <ul class="scoreCategory"></ul>
+        </div>
 
-  </section>
-<section class="jobDetails">
-    <h2>Job Details</h2>
+      </section>
+      <section class="jobDetails">
+        <div class="wrapper">
+          <h2>Job Details</h2>
+          <div class="jobListingsContainer"></div>
+        </div>
+      </section>
+    </main>
 
-  <div class="jobListingsContainer">
-
-  </div>
-
-</section>
-</main>
-
-    <footer></footer>
-
+    <footer>
+      <a id="backToTop" href="#home">Back to Top</a>
+      <h3>Made by Nick Wang and Steve Seki 2019 Juno College of Technology</h3>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.0.min.js"
       integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
       crossorigin="anonymous"
     ></script>
+    <!-- Flickity -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Main Script -->
     <script src="./script/script.js"></script>
   </body>
 </html>

@@ -8,7 +8,8 @@ gitHiredApp.init = () => {
     "montreal",
     "london"
   ];
-  gitHiredApp.cityImages = [];
+
+  gitHiredApp.cityImageUrlObject = {};
 
   gitHiredApp.teleCityBaseUrl = "https://api.teleport.org/api/urban_areas/";
 
@@ -25,23 +26,17 @@ gitHiredApp.teleCityReusableApiCall = (cityName, infoType) => {
   });
 };
 
-
-gitHiredApp.cityImageUrlObject = {};
-
-gitHiredApp.teleCityImageAjaxCall = (cityName) => {
+gitHiredApp.teleCityImageAjaxCall = cityName => {
   let selectCityImageContainer = $(`.${cityName} .imageContainer`);
   gitHiredApp.teleCityReusableApiCall(cityName, "images").then(res => {
     const renderHtml = `<img src=${
       res.photos[0].image.mobile
     } alt="This is a photo of ${cityName.replace("-", " ")}" />`;
-    
+
     gitHiredApp.cityImageUrlObject[cityName] = renderHtml;
     selectCityImageContainer.append(renderHtml);
   });
 };
-
-
-
 
 gitHiredApp.githubJobsReusableApiCall = cityName => {
   // Github jobs API
@@ -79,8 +74,7 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
 
 const jobListingContainer = $(".jobListingsContainer");
 
-gitHiredApp.handleOnChangeJobDetails = (selectedSingleCity) => {
-
+gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
   gitHiredApp.githubJobsReusableApiCall(selectedSingleCity).then(res => {
     for (let i = 0; i < 6; i++) {
       const renderHtml = `
@@ -92,27 +86,48 @@ gitHiredApp.handleOnChangeJobDetails = (selectedSingleCity) => {
           <p><a href=${res[i].url} target="_blank">Apply Here</a></p>
         <div/>`;
       jobListingContainer.append(renderHtml);
-    };
+    }
   });
-}
-
-gitHiredApp.handleOnChangeCityDetails = (selectedSingleCity) => {
-  gitHiredApp.teleCityReusableApiCall(selectedSingleCity, "scores").then(res => {
-    const renderHtml
-  })
 };
 
+gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
+  gitHiredApp
+    .teleCityReusableApiCall(selectedSingleCity, "scores")
+    .then(res => {
+      res.categories.forEach(stat => {
+        $(".scoreCategory").append(`<li>
+        <h3>${stat.name}</h3>
+        <p>Score: ${stat.score_out_of_10.toFixed(1)}</p>
+        <div class="scoreBar"> 
+        <div class="scoreBarFill" style="height:24px;width:${stat.score_out_of_10 *
+          10}%;background-color:${stat.color}"></div>
+        </div>
+        </li>`);
+      });
+
+      const renderHtml = `${gitHiredApp.cityImageUrlObject[selectedSingleCity]}
+      <p>Average Quality of life Score: ${Math.round(
+        res.teleport_city_score
+      )} / 100
+      ${res.summary}`;
+      $(".cityDetailsContainer").html(renderHtml);
+    });
+};
+
+gitHiredApp.reuseableSmoothScroll = selector => {
+  const y = selector.offset().top;
+  $("html, body").animate({ scrollTop: y }, 750, "swing");
+};
 
 gitHiredApp.returnSelectedCityValue = () => {
   const citySelected = $(".citySelect");
-
-  
   citySelected.on("change", e => {
+    gitHiredApp.reuseableSmoothScroll($("main"));
     jobListingContainer.html("");
+
     let selectedSingleCity = e.target.value;
     gitHiredApp.handleOnChangeJobDetails(selectedSingleCity);
     gitHiredApp.handleOnChangeCityDetails(selectedSingleCity);
-
   });
 };
 
@@ -122,6 +137,10 @@ gitHiredApp.populateWithImagesAndJobs = () => {
     gitHiredApp.githubJobsAjaxCall(city);
   });
 };
+
+$("#backToTop").on("click", () => {
+  gitHiredApp.reuseableSmoothScroll($("header"));
+});
 
 $(document).ready(function() {
   $(".main-carousel").flickity({
