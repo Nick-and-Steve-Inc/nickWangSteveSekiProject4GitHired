@@ -70,6 +70,26 @@ h3 {
   font-weight: bold;
 }
 
+a.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+a.button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
 .imageContainer img {
   width: 100px;
   height: 100px;
@@ -96,7 +116,7 @@ a {
 }
 
 .carousel-cell {
-  height: 80vh;
+  height: 85vh;
   border-radius: 25px;
   background: #bbdef0;
   padding-top: 20px;
@@ -149,22 +169,46 @@ main {
 }
 
 footer {
-  position: relative;
   text-align: center;
   color: white;
   margin-bottom: 10px;
+}
+
+footer .flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .scoreBar {
   border: 1px solid black;
 }
 
-#backToTop {
-  position: absolute;
-  bottom: 50px;
+.flickity-page-dots {
+  display: none;
 }
 
-.flickity-page-dots {
+.cityDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.cityDetailsContainer img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+
+.showScore {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hidden {
   display: none;
 }
 
@@ -205,7 +249,6 @@ footer {
 }
 
 @media only screen and (max-width: 550px) {
-  
   main {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +262,6 @@ footer {
   .jobDetails {
     width: 100%;
   }
-
 }
 
 @media only screen and (max-width: 425px) {
@@ -238,5 +280,4 @@ footer {
   h3 {
     font-size: 0.8rem;
   }
-
 }

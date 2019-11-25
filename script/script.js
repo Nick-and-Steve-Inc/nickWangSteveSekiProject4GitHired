@@ -64,7 +64,7 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
               <h3>${res[i].title}</h3>
               <p class="jobType">${res[i].type}</p>
               <p class="company">Company: ${res[i].company}</p>
-              <p><a href=${res[i].url} target="_blank">Apply Here</a></p>
+              <p><a class="button" href=${res[i].url} target="_blank">Apply Here</a></p>
             <div/>`;
 
       selectCityContainer.append(renderHtml);
@@ -76,6 +76,8 @@ const jobListingContainer = $(".jobListingsContainer");
 
 gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
   gitHiredApp.githubJobsReusableApiCall(selectedSingleCity).then(res => {
+    jobListingContainer.append(`<h2>Job Details</h2>`);
+
     for (let i = 0; i < 6; i++) {
       const renderHtml = `
         <div class="singleJobPost"> 
@@ -105,10 +107,18 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
         </li>`);
       });
 
-      const renderHtml = `${gitHiredApp.cityImageUrlObject[selectedSingleCity]}
+      const renderHtml = `
+      <div class="cityDetailImageContainer">
+      ${gitHiredApp.cityImageUrlObject[selectedSingleCity]}
+      </div>
+      <div class="cityDetailsCard">
+      <h2>${selectedSingleCity
+        .charAt(0)
+        .toUpperCase() + selectedSingleCity.slice(1)        .replace("-", " ")} City Details</h2>
       <p>Average Quality of life Score: ${Math.round(
         res.teleport_city_score
       )} / 100
+      </div>
       ${res.summary}`;
       $(".cityDetailsContainer").html(renderHtml);
     });
@@ -122,6 +132,7 @@ gitHiredApp.reuseableSmoothScroll = selector => {
 gitHiredApp.returnSelectedCityValue = () => {
   const citySelected = $(".citySelect");
   citySelected.on("change", e => {
+    $('.showScore').removeClass('hidden')
     gitHiredApp.reuseableSmoothScroll($("main"));
     jobListingContainer.html("");
 
@@ -141,6 +152,10 @@ gitHiredApp.populateWithImagesAndJobs = () => {
 $("#backToTop").on("click", () => {
   gitHiredApp.reuseableSmoothScroll($("header"));
 });
+$('.showScore').on('click', ()=> {
+
+ $('.scoreCategory').toggleClass('hidden')
+})
 
 $(document).ready(function() {
   $(".main-carousel").flickity({
