@@ -132,7 +132,7 @@ gitHiredApp.reuseableSmoothScroll = selector => {
 gitHiredApp.returnSelectedCityValue = () => {
   const citySelected = $(".citySelect");
   citySelected.on("change", e => {
-    $('.showScore').removeClass('hidden')
+    $('.showScore').css('display', 'block')
     gitHiredApp.reuseableSmoothScroll($("main"));
     jobListingContainer.html("");
 
@@ -149,11 +149,11 @@ gitHiredApp.populateWithImagesAndJobs = () => {
   });
 };
 
-$("#backToTop").on("click", () => {
+$(".backToTop").on("click", () => {
   gitHiredApp.reuseableSmoothScroll($("header"));
 });
-$('.showScore').on('click', ()=> {
 
+$('.showScore').on('click', ()=> {
  $('.scoreCategory').toggleClass('hidden')
 })
 

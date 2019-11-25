@@ -203,13 +203,24 @@ footer .flexContainer {
 }
 
 
-.showScore {
+a.showScore {
   text-align: center;
   margin: 0 auto;
+  display: none;
+}
+
+.scoreCategory {
+  display: block;
+  transition: all 1s linear;
 }
 
 .hidden {
   display: none;
+}
+
+.backToTop {
+  position: fixed;
+  bottom: 50px;
 }
 
 /* Responsive */
