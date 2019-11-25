@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato|Raleway:400,600&display=swap");
 
 html,
 body {
   font-size: 20px;
   font-family: "Lato", sans-serif;
-  background: #25798e;
-  /* overflow: hidden; */
+  overflow: hidden;
+  background: linear-gradient(64deg, #bbdef0, #25798e);
+  background-size: 400% 400%;
 }
 
 img {
@@ -24,11 +25,11 @@ main {
 }
 
 .citySelect {
-  min-width: 150px;
+  min-width: 200px;
   width: 20%;
   border-radius: 25px;
-  padding: 5px;
   text-align: center;
+  padding: 0.35em 1.2em;
 }
 
 .headerTop {
@@ -42,12 +43,6 @@ main {
   width: 100px;
 }
 
-.jobType {
-  font-size: 0.8rem;
-  color: grey;
-  padding-bottom: 10px;
-}
-
 h1,
 h2,
 h3 {
@@ -58,31 +53,32 @@ h1 {
   font-size: 2rem;
   text-align: center;
   cursor: pointer;
+  font-weight: 600;
 }
 
 h2 {
   font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
+  text-transform: capitalize;
 }
 
 h3 {
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
+  margin: 10px 0;
+  line-height: 25px;
 }
 
 a.button {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
-  margin: 0 0.3em 0.3em 0;
   border-radius: 0.12em;
-  box-sizing: border-box;
   text-decoration: none;
-  font-weight: 300;
   color: #ffffff;
-  text-align: center;
-  transition: all 0.2s;
+  transition: all 0.2s linear;
   cursor: pointer;
+  background: rgba(8, 65, 92, 0.7);
 }
 
 a.button:hover {
@@ -129,8 +125,7 @@ a {
 
 .singleJobPost {
   border-bottom: 1px solid grey;
-  height: 30%;
-  margin-top: 20px;
+  padding: 10px 0 20px 0;
 }
 
 .jobsContainer .singleJobPost:last-of-type {
@@ -202,7 +197,6 @@ footer .flexContainer {
   border-radius: 50%;
 }
 
-
 a.showScore {
   text-align: center;
   margin: 0 auto;
@@ -221,17 +215,114 @@ a.showScore {
 .backToTop {
   position: fixed;
   bottom: 50px;
+  right: 50px;
+  color: white;
+  font-size: 2.5rem;
+  transition: all 0.3s linear;
+}
+
+.backToTop:hover {
+  color: black;
+}
+
+.cityDetails .wrapper,
+.jobDetails .wrapper {
+  background-color: #bbdef0;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.cityDetails .wrapper {
+  margin-right: 15px;
+}
+.jobDetails .wrapper {
+  margin-left: 15px;
+}
+
+.cityDetailsCard h2,
+.cityDetailsCard p {
+  margin: 10px 0;
+}
+
+a.showScore {
+  margin-top: 10px;
+}
+
+.jobDetails a.button {
+  margin-bottom: 20px;
+}
+
+.cityDetails p {
+  text-align: left;
+  line-height: 22px;
+}
+
+.cityAvgScore {
+  font-weight: 600;
 }
 
 /* Responsive */
-
 @media only screen and (max-width: 1000px) {
   li.cities {
     width: calc(100% / 2 - 20px);
   }
 }
 
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+  }
+
+  p,
+  .company {
+    font-size: 0.8rem;
+  }
+
+  a.button {
+    font-size: 0.8rem;
+  }
+
+  .backToTop {
+    bottom: 20px;
+    right: 20px;
+    font-size: 2rem;
+  }
+}
 @media only screen and (max-width: 650px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .cityDetails,
+  .jobDetails {
+    width: 100%;
+  }
+
+  .cityDetails .wrapper,
+  .jobDetails .wrapper {
+    margin: 0 auto;
+  }
+
   li.cities {
     width: 100%;
     text-align: center;
@@ -253,35 +344,81 @@ a.showScore {
     content: "";
     display: block;
     margin: 0 auto;
-    width: 50vw;
+    width: 70vw;
     padding-top: 20px;
     border-bottom: 1px solid grey;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  main {
-    display: flex;
-    flex-wrap: wrap;
+  h1 {
+    font-size: 2rem;
   }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
   .carousel-cell {
     height: 85vh;
     padding-top: 10px;
   }
 
-  .cityDetails,
-  .jobDetails {
-    width: 100%;
+  .flickity-prev-next-button.next,
+  .flickity-prev-next-button.previous {
+    top: 90%;
   }
 }
 
 @media only screen and (max-width: 425px) {
+.backToTop {
+  right: 5px;
+  bottom: 5px;
+}
+
+
+.citySelect {
+  padding: 2px;
+}
+
   .logoImageContainer {
+    width: 60px;
+  }
+
+  .singleJobPost {
+    margin: 0;
+    padding: 0;
+  }
+
+  .jobHeading img {
     display: none;
+  }
+  .citySelect {
+    min-width: 150px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    display: none;
+    }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+
+
+  h1 {
+    display: none;
   }
 
   h2 {

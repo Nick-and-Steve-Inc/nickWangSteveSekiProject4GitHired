@@ -6,7 +6,15 @@ gitHiredApp.init = () => {
     "los-angeles",
     "chicago",
     "montreal",
-    "london"
+    "london",
+    "boston",
+    "lisbon",
+    "berlin",
+    "san-francisco-bay-area",
+    "barcelona",
+    "hamburg",
+    
+
   ];
 
   gitHiredApp.cityImageUrlObject = {};
@@ -61,11 +69,10 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
     for (let i = 0; i < 3; i++) {
       const renderHtml = `
           <div class="singleJobPost"> 
-              <h3>${res[i].title}</h3>
-              <p class="jobType">${res[i].type}</p>
+          <h3>${res[i].title} (${res[i].type})</h3>
               <p class="company">Company: ${res[i].company}</p>
               <p><a class="button" href=${res[i].url} target="_blank">Apply Here</a></p>
-            <div/>`;
+            </div>`;
 
       selectCityContainer.append(renderHtml);
     }
@@ -81,11 +88,9 @@ gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
     for (let i = 0; i < 6; i++) {
       const renderHtml = `
         <div class="singleJobPost"> 
-          <h3>${res[i].title}</h3>
-          <p class="jobType">${res[i].type}</p>
+          <h3>${res[i].title} (${res[i].type})</h3>
           <p class="company">Company: ${res[i].company}</p>
-          <p class="createdAt">Company: ${res[i].created_at}</p>
-          <p><a href=${res[i].url} target="_blank">Apply Here</a></p>
+          <a class="button" href=${res[i].url} target="_blank">Apply Here</a>
         <div/>`;
       jobListingContainer.append(renderHtml);
     }
@@ -112,15 +117,22 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
       ${gitHiredApp.cityImageUrlObject[selectedSingleCity]}
       </div>
       <div class="cityDetailsCard">
-      <h2>${selectedSingleCity
-        .charAt(0)
-        .toUpperCase() + selectedSingleCity.slice(1)        .replace("-", " ")} City Details</h2>
-      <p>Average Quality of life Score: ${Math.round(
+      <h2>${selectedSingleCity.replace("-", " ")} City Details</h2>
+      <p>Average Quality of life Score: <span class="cityAvgScore">${Math.round(
         res.teleport_city_score
-      )} / 100
+      )} / 100</span></p>
       </div>
       ${res.summary}`;
       $(".cityDetailsContainer").html(renderHtml);
+      const cityAvgScore = $(".cityAvgScore");
+
+      if (res.teleport_city_score >= 69.5) {
+        cityAvgScore.css("color", "#34a853");
+      } else if (res.teleport_city_score >= 50) {
+        cityAvgScore.css("color", "#fbbc05");
+      } else {
+        cityAvgScore.css("color", "#ea4335");
+      }
     });
 };
 
@@ -132,7 +144,8 @@ gitHiredApp.reuseableSmoothScroll = selector => {
 gitHiredApp.returnSelectedCityValue = () => {
   const citySelected = $(".citySelect");
   citySelected.on("change", e => {
-    $('.showScore').css('display', 'block')
+    $(".showScore").css("display", "block");
+    $("html, body").css("overflow", "visible");
     gitHiredApp.reuseableSmoothScroll($("main"));
     jobListingContainer.html("");
 
@@ -153,9 +166,9 @@ $(".backToTop").on("click", () => {
   gitHiredApp.reuseableSmoothScroll($("header"));
 });
 
-$('.showScore').on('click', ()=> {
- $('.scoreCategory').toggleClass('hidden')
-})
+$(".showScore").on("click", () => {
+  $(".scoreCategory").toggleClass("hidden");
+});
 
 $(document).ready(function() {
   $(".main-carousel").flickity({

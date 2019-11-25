@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- favicon -->
     <link rel="icon" type="image/png" href="./assets/logo.png" />
+    <!-- flickity carousel css  -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/flickity@2/dist/flickity.min.css"
     />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <!-- styles -->
     <link rel="stylesheet" href="./styles/setup.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>GitHired !</title>
@@ -41,9 +49,15 @@
             <option value="chicago">Chicago</option>
             <option value="montreal">Montreal</option>
             <option value="london">London</option>
+            <option value="boston">Boston</option>
+            <option value="lisbon">Lisbon</option>
+            <option value="berlin">Berlin</option>
+            <option value="san-francisco-bay-area">San Francisco</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="hamburg">Hamburg</option>
           </select>
         </div>
-
+        <!-- end of headerTop class -->
         <ul class="main-carousel">
           <li class="cities carousel-cell new-york">
             <div class="jobHeading">
@@ -52,7 +66,7 @@
             </div>
             <div class="jobsContainer"></div>
           </li>
-
+          <!-- end of new york -->
           <li class="cities carousel-cell toronto">
             <div class="jobHeading">
               <div class="imageContainer"></div>
@@ -60,6 +74,7 @@
             </div>
             <div class="jobsContainer"></div>
           </li>
+          <!-- end of toronto -->
           <li class="cities carousel-cell los-angeles">
             <div class="jobHeading">
               <div class="imageContainer"></div>
@@ -67,6 +82,7 @@
             </div>
             <div class="jobsContainer"></div>
           </li>
+          <!-- end of los-angeles -->
           <li class="cities carousel-cell chicago">
             <div class="jobHeading">
               <div class="imageContainer"></div>
@@ -74,13 +90,15 @@
             </div>
             <div class="jobsContainer"></div>
           </li>
-          <li class="cities carousel-cell montreal">
+          <!-- end of chicago -->
+          <li class="cities carousel-cell san-francisco-bay-area">
             <div class="jobHeading">
               <div class="imageContainer"></div>
-              <h2>Montreal, CAN</h2>
+              <h2>San Francisco, Bay Area, US</h2>
             </div>
             <div class="jobsContainer"></div>
           </li>
+          <!-- end of montreal -->
           <li class="cities carousel-cell london">
             <div class="jobHeading">
               <div class="imageContainer"></div>
@@ -88,8 +106,11 @@
             </div>
             <div class="jobsContainer"></div>
           </li>
+          <!-- end of london -->
         </ul>
+        <!-- end of main carousel class -->
       </div>
+      <!-- end of wrapper -->
     </header>
 
     <main id="main">
@@ -109,7 +130,9 @@
 
     <footer>
       <div class="wrapper flexContainer">
-        <a class="backToTop" href="#home">Back to Top</a>
+        <a class="backToTop" href="#home" title="Back to Top"
+          ><i class="fas fa-arrow-alt-circle-up"></i
+        ></a>
         <!-- <h3>
           Made by Nick Wang and Steve Seki 2019 Juno College of Technology
         </h3> -->
