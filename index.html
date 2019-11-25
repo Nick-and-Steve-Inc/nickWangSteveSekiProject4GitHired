@@ -19,9 +19,11 @@
         <div class="headerTop">
           <div class="headingContainer">
             <div class="logoImageContainer">
-              <img src="./assets/logo.png" alt="" />
+              <a href="" onClick="window.location.reload();"
+                ><img src="./assets/logo.png" alt="githired logo"
+              /></a>
             </div>
-            <h1>GitHired!</h1>
+            <h1 onClick="window.location.reload();">GitHired!</h1>
           </div>
           <label aria-label="please select a city" for="citySelect"></label>
           <select
@@ -97,7 +99,6 @@
           <div class="cityDetailsContainer"></div>
           <ul class="scoreCategory"></ul>
         </div>
-
       </section>
       <section class="jobDetails">
         <div class="wrapper">
@@ -108,8 +109,12 @@
     </main>
 
     <footer>
-      <a id="backToTop" href="#home">Back to Top</a>
-      <h3>Made by Nick Wang and Steve Seki 2019 Juno College of Technology</h3>
+      <div class="wrapper">
+        <a id="backToTop" href="#home">Back to Top</a>
+        <h3>
+          Made by Nick Wang and Steve Seki 2019 Juno College of Technology
+        </h3>
+      </div>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.0.min.js"

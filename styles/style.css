@@ -5,6 +5,7 @@ body {
   font-size: 20px;
   font-family: "Lato", sans-serif;
   background: #25798e;
+  /* overflow: hidden; */
 }
 
 img {
@@ -56,6 +57,7 @@ h3 {
 h1 {
   font-size: 2rem;
   text-align: center;
+  cursor: pointer;
 }
 
 h2 {
@@ -128,11 +130,11 @@ header {
 }
 
 .flickity-prev-next-button.next {
-  right: -50px;
+  right: -45px;
 }
 
 .flickity-prev-next-button.previous {
-  left: -50px;
+  left: -65px;
 }
 
 main {
@@ -142,6 +144,7 @@ main {
 
 .cityDetails,
 .jobDetails {
+  margin-top: 20px;
   width: 50%;
 }
 
@@ -159,6 +162,10 @@ footer {
 #backToTop {
   position: absolute;
   bottom: 50px;
+}
+
+.flickity-page-dots {
+  display: none;
 }
 
 /* Responsive */
@@ -179,6 +186,14 @@ footer {
     border-bottom: none;
   }
 
+  .flickity-prev-next-button.next {
+    right: 10px;
+  }
+
+  .flickity-prev-next-button.previous {
+    left: 10px;
+  }
+
   .singleJobPost:after {
     content: "";
     display: block;
@@ -187,4 +202,41 @@ footer {
     padding-top: 20px;
     border-bottom: 1px solid grey;
   }
+}
+
+@media only screen and (max-width: 550px) {
+  
+  main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .carousel-cell {
+    height: 85vh;
+    padding-top: 10px;
+  }
+
+  .cityDetails,
+  .jobDetails {
+    width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .logoImageContainer {
+    display: none;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+  }
+
 }
