@@ -1,3 +1,11 @@
+// Have an array of 6 or more city names, [new york, toronto, california, chicago, montreal, london]
+// Github jobs = 3 job listings using search param of city names
+// Teleport api = image of 6 cities using city id
+
+// Loop through the cityArr and call the github api to get a list of 3 job titles, and link to that site from that city using the keyword search url, At the same time, Call the teleport city api and get an image of that city, and use the when() jquery method we get both promises resolved, we append both response from both api calls onto the page, below the each city categories.
+// The user is able to click onto each job achor and be taken to be taken to the original external job posting.
+
+
 gitHiredApp = {};
 gitHiredApp.init = () => {
   gitHiredApp.cityArray = [
@@ -13,8 +21,6 @@ gitHiredApp.init = () => {
     "san-francisco-bay-area",
     "barcelona",
     "hamburg",
-    
-
   ];
 
   gitHiredApp.cityImageUrlObject = {};

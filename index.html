@@ -17,7 +17,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
     <!-- styles -->
-    <link rel="stylesheet" href="./styles/setup.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>GitHired !</title>
   </head>
@@ -27,10 +26,12 @@
         <div class="headerTop">
           <div class="headingContainer">
             <div class="logoImageContainer">
+              <!-- onClick refreshes the page -->
               <a href="" onClick="window.location.reload();"
                 ><img src="./assets/logo.png" alt="githired logo"
               /></a>
             </div>
+            <!-- onClick refreshes the page -->
             <h1 onClick="window.location.reload();">GitHired!</h1>
           </div>
           <label aria-label="please select a city" for="citySelect"></label>
@@ -56,6 +57,7 @@
             <option value="barcelona">Barcelona</option>
             <option value="hamburg">Hamburg</option>
           </select>
+          <!-- end of citySelect class -->
         </div>
         <!-- end of headerTop class -->
         <ul class="main-carousel">
@@ -120,24 +122,25 @@
           <a class="showScore button">Show Detailed Scores</a>
           <ul class="scoreCategory hidden"></ul>
         </div>
+        <!-- end of wrapper and flexContainer -->
       </section>
+      <!-- end of cityDetails class -->
       <section class="jobDetails">
         <div class="wrapper">
           <div class="jobListingsContainer"></div>
         </div>
       </section>
+      <!-- end of jobDetails section -->
     </main>
-
     <footer>
-      <div class="wrapper flexContainer">
-        <a class="backToTop" href="#home" title="Back to Top"
-          ><i class="fas fa-arrow-alt-circle-up"></i
+      <div class="wrapper">
+        <a class="backToTop" href="#home" title="Back to Top">
+          <i class="fas fa-arrow-alt-circle-up"></i
         ></a>
-        <!-- <h3>
-          Made by Nick Wang and Steve Seki 2019 Juno College of Technology
-        </h3> -->
       </div>
+      <!-- end of wrapper and flexContainer -->
     </footer>
+    <!-- jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.4.0.min.js"
       integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="

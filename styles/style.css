@@ -1,5 +1,64 @@
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* end of set-up and reset */
+
+/* google fonts */
 @import url("https://fonts.googleapis.com/css?family=Lato|Raleway:400,600&display=swap");
 
+/* Made by Nick Wang and Steve Seki 2019 Juno College of Technology */
+
+/* start of global styles */
 html,
 body {
   font-size: 20px;
@@ -13,35 +72,7 @@ img {
   width: 100%;
 }
 
-header,
-main {
-  height: 100vh;
-}
-
-.headingContainer {
-  width: 50%;
-  display: flex;
-  align-items: center;
-}
-
-.citySelect {
-  min-width: 200px;
-  width: 20%;
-  border-radius: 25px;
-  text-align: center;
-  padding: 0.35em 1.2em;
-}
-
-.headerTop {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logoImageContainer {
-  width: 100px;
-}
+/* fonts */
 
 h1,
 h2,
@@ -70,6 +101,8 @@ h3 {
   line-height: 25px;
 }
 
+/* button styles */
+
 a.button {
   display: inline-block;
   padding: 0.35em 1.2em;
@@ -85,7 +118,55 @@ a.button:hover {
   color: #000000;
   background-color: #ffffff;
 }
+.wrapper {
+  max-width: 1440px;
+  width: 80%;
+  margin: 0 auto;
+}
 
+.hidden {
+  display: none;
+}
+
+/* end of global styles */
+
+/* header styles */
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerTop {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headingContainer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.logoImageContainer {
+  width: 100px;
+}
+
+.citySelect {
+  min-width: 200px;
+  width: 20%;
+  border-radius: 25px;
+  text-align: center;
+  padding: 0.35em 1.2em;
+}
+
+/* start of carousel styles */
+
+/* city images */
 .imageContainer img {
   width: 100px;
   height: 100px;
@@ -97,18 +178,11 @@ a.button:hover {
   flex-direction: column;
   align-items: center;
 }
-.company {
-  padding-bottom: 10px;
-}
 
-/* To add media query for mobile */
+/* width for each card */
 li.cities {
   width: calc(100% / 3 - 20px);
   margin: 10px;
-}
-
-a {
-  text-decoration: none;
 }
 
 .carousel-cell {
@@ -118,11 +192,13 @@ a {
   padding-top: 20px;
 }
 
+/* appending actual jobs from js */
 .jobsContainer {
   padding: 0 15px;
   height: 60vh;
 }
 
+/* css for each posting*/
 .singleJobPost {
   border-bottom: 1px solid grey;
   padding: 10px 0 20px 0;
@@ -132,27 +208,25 @@ a {
   border-bottom: none;
 }
 
-.wrapper {
-  max-width: 1440px;
-  width: 80%;
-  margin: 0 auto;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* carousel buttons */
 .flickity-prev-next-button.next {
   right: -45px;
+}
+
+/* carousel dots */
+.flickity-page-dots {
+  display: none;
 }
 
 .flickity-prev-next-button.previous {
   left: -65px;
 }
+/* end of carousel */
+/* end of header */
 
+/* start of main */
 main {
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
 }
@@ -163,67 +237,7 @@ main {
   width: 50%;
 }
 
-footer {
-  text-align: center;
-  color: white;
-  margin-bottom: 10px;
-}
-
-footer .flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.scoreBar {
-  border: 1px solid black;
-}
-
-.flickity-page-dots {
-  display: none;
-}
-
-.cityDetailsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.cityDetailsContainer img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
-
-a.showScore {
-  text-align: center;
-  margin: 0 auto;
-  display: none;
-}
-
-.scoreCategory {
-  display: block;
-  transition: all 1s linear;
-}
-
-.hidden {
-  display: none;
-}
-
-.backToTop {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  color: white;
-  font-size: 2.5rem;
-  transition: all 0.3s linear;
-}
-
-.backToTop:hover {
-  color: black;
-}
+/* adjusting wrappers */
 
 .cityDetails .wrapper,
 .jobDetails .wrapper {
@@ -239,17 +253,28 @@ a.showScore {
   margin-left: 15px;
 }
 
+.jobDetails a.button {
+  margin-bottom: 20px;
+}
+
+/* start of city details */
+
+.cityDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.cityDetailsContainer img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .cityDetailsCard h2,
 .cityDetailsCard p {
   margin: 10px 0;
-}
-
-a.showScore {
-  margin-top: 10px;
-}
-
-.jobDetails a.button {
-  margin-bottom: 20px;
 }
 
 .cityDetails p {
@@ -260,6 +285,58 @@ a.showScore {
 .cityAvgScore {
   font-weight: 600;
 }
+
+/* scores */
+.scoreBar {
+  border: 1px solid black;
+}
+
+a.showScore {
+  margin-top: 10px;
+}
+
+a.showScore {
+  text-align: center;
+  margin: 0 auto;
+  display: none;
+}
+
+.scoreCategory {
+  display: block;
+  transition: all 1s linear;
+}
+
+/* end of scores */
+
+/* end of city details */
+
+/* start of job Details */
+
+.company {
+  padding-bottom: 10px;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.backToTop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  color: white;
+  font-size: 2.5rem;
+  transition: all 0.3s linear;
+}
+
+.backToTop:hover {
+  color: black;
+}
+
+/* end of footer */
 
 /* Responsive */
 @media only screen and (max-width: 1000px) {
@@ -277,15 +354,9 @@ a.showScore {
     font-size: 1rem;
   }
 
-  h3 {
-    font-size: 0.8rem;
-  }
-
+  h3,
   p,
-  .company {
-    font-size: 0.8rem;
-  }
-
+  .company,
   a.button {
     font-size: 0.8rem;
   }
@@ -296,6 +367,7 @@ a.showScore {
     font-size: 2rem;
   }
 }
+
 @media only screen and (max-width: 650px) {
   h1 {
     font-size: 2rem;
@@ -313,6 +385,7 @@ a.showScore {
     display: flex;
     flex-wrap: wrap;
   }
+
   .cityDetails,
   .jobDetails {
     width: 100%;
@@ -340,6 +413,7 @@ a.showScore {
     left: 10px;
   }
 
+  /* replacing default border-bottom */
   .singleJobPost:after {
     content: "";
     display: block;
@@ -375,15 +449,26 @@ a.showScore {
 }
 
 @media only screen and (max-width: 425px) {
-.backToTop {
-  right: 5px;
-  bottom: 5px;
-}
+  h1,
+  .jobHeading img {
+    display: none;
+  }
 
+  h2 {
+    font-size: 1rem;
+  }
 
-.citySelect {
-  padding: 2px;
-}
+  h3 {
+    font-size: 0.8rem;
+  }
+  .backToTop {
+    right: 5px;
+    bottom: 5px;
+  }
+
+  .citySelect {
+    padding: 2px;
+  }
 
   .logoImageContainer {
     width: 60px;
@@ -394,38 +479,7 @@ a.showScore {
     padding: 0;
   }
 
-  .jobHeading img {
-    display: none;
-  }
   .citySelect {
     min-width: 150px;
-  }
-
-  h1 {
-    display: none;
-    }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  h3 {
-    font-size: 0.8rem;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-
-
-  h1 {
-    display: none;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  h3 {
-    font-size: 0.8rem;
   }
 }
