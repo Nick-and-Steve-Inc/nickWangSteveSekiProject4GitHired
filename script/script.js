@@ -32,6 +32,7 @@ gitHiredApp.init = () => {
   gitHiredApp.githubJobBaseUrl = "https://jobs.github.com/positions.json";
 };
 
+// Ajax from Teleport API
 gitHiredApp.teleCityReusableApiCall = (cityName, infoType) => {
   return $.ajax({
     url: `${gitHiredApp.teleCityBaseUrl}slug:${cityName}/${infoType}`,
@@ -40,6 +41,7 @@ gitHiredApp.teleCityReusableApiCall = (cityName, infoType) => {
   });
 };
 
+// Ajax from GitHub Jobs API
 gitHiredApp.githubJobsReusableApiCall = cityName => {
   return $.ajax({
     url: "http://proxy.hackeryou.com",
@@ -56,6 +58,7 @@ gitHiredApp.githubJobsReusableApiCall = cityName => {
   });
 };
 
+// Appends City Image to Landing Page
 gitHiredApp.teleCityImageAjaxCall = cityName => {
   let selectCityImageContainer = $(`.${cityName} .imageContainer`);
   gitHiredApp.teleCityReusableApiCall(cityName, "images").then(res => {
@@ -67,6 +70,7 @@ gitHiredApp.teleCityImageAjaxCall = cityName => {
   });
 };
 
+// Appends Job Details on Landing Page
 gitHiredApp.githubJobsAjaxCall = cityName => {
   let selectCityContainer = $(`.${cityName} .jobsContainer`);
   gitHiredApp.githubJobsReusableApiCall(cityName).then(res => {
@@ -82,6 +86,7 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
   });
 };
 
+// Appends Job Details on Detailed Section
 gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
   gitHiredApp.githubJobsReusableApiCall(selectedSingleCity).then(res => {
     jobListingContainer.append(`<h2>Job Details</h2>`);
@@ -114,6 +119,7 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
         </li>`);
       });
 
+      // Appends City Details
       const renderHtml = `
       <div class="cityDetailImageContainer">
       ${gitHiredApp.cityImageUrlObject[selectedSingleCity]}
@@ -127,7 +133,7 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
       ${res.summary}`;
       $(".cityDetailsContainer").html(renderHtml);
 
-
+      // Changes the color based on city score
       const cityAvgScore = $(".cityAvgScore");
       if (res.teleport_city_score >= 69.5) {
         cityAvgScore.css("color", "#34a853");
@@ -139,6 +145,7 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
     });
 };
 
+// Smooth Scroll for City/Job Details, and Back to Top button
 gitHiredApp.reuseableSmoothScroll = selector => {
   const y = selector.offset().top;
   $("html, body").animate({ scrollTop: y }, 750, "swing");
@@ -157,6 +164,7 @@ gitHiredApp.returnSelectedCityValue = () => {
   });
 };
 
+// Populates City and Job Details
 gitHiredApp.populateWithImagesAndJobs = () => {
   gitHiredApp.cityArray.forEach(city => {
     gitHiredApp.teleCityImageAjaxCall(city);
