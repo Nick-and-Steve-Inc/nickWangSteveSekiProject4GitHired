@@ -124,10 +124,6 @@ a.button:hover {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
 /* end of global styles */
 
 /* header styles */
@@ -301,9 +297,8 @@ a.showScore {
   display: none;
 }
 
-.scoreCategory {
-  display: block;
-  transition: all 1s linear;
+.hidden {
+  display: none;
 }
 
 /* end of scores */

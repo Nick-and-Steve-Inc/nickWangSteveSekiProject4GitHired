@@ -5,6 +5,10 @@
 // Loop through the cityArr and call the github api to get a list of 3 job titles, and link to that site from that city using the keyword search url, At the same time, Call the teleport city api and get an image of that city, and use the when() jquery method we get both promises resolved, we append both response from both api calls onto the page, below the each city categories.
 // The user is able to click onto each job achor and be taken to be taken to the original external job posting.
 
+// DOM element selections
+const jobListingContainer = $(".jobListingsContainer");
+const citySelected = $(".citySelect");
+const scoreCategory = $(".scoreCategory");
 
 gitHiredApp = {};
 gitHiredApp.init = () => {
@@ -20,17 +24,13 @@ gitHiredApp.init = () => {
     "berlin",
     "san-francisco-bay-area",
     "barcelona",
-    "hamburg",
+    "hamburg"
   ];
 
   gitHiredApp.cityImageUrlObject = {};
-
   gitHiredApp.teleCityBaseUrl = "https://api.teleport.org/api/urban_areas/";
-
   gitHiredApp.githubJobBaseUrl = "https://jobs.github.com/positions.json";
 };
-
-// https://api.teleport.org/api/urban_areas/slug:auckland/scores
 
 gitHiredApp.teleCityReusableApiCall = (cityName, infoType) => {
   return $.ajax({
@@ -40,20 +40,7 @@ gitHiredApp.teleCityReusableApiCall = (cityName, infoType) => {
   });
 };
 
-gitHiredApp.teleCityImageAjaxCall = cityName => {
-  let selectCityImageContainer = $(`.${cityName} .imageContainer`);
-  gitHiredApp.teleCityReusableApiCall(cityName, "images").then(res => {
-    const renderHtml = `<img src=${
-      res.photos[0].image.mobile
-    } alt="This is a photo of ${cityName.replace("-", " ")}" />`;
-
-    gitHiredApp.cityImageUrlObject[cityName] = renderHtml;
-    selectCityImageContainer.append(renderHtml);
-  });
-};
-
 gitHiredApp.githubJobsReusableApiCall = cityName => {
-  // Github jobs API
   return $.ajax({
     url: "http://proxy.hackeryou.com",
     dataType: "json",
@@ -69,6 +56,17 @@ gitHiredApp.githubJobsReusableApiCall = cityName => {
   });
 };
 
+gitHiredApp.teleCityImageAjaxCall = cityName => {
+  let selectCityImageContainer = $(`.${cityName} .imageContainer`);
+  gitHiredApp.teleCityReusableApiCall(cityName, "images").then(res => {
+    const renderHtml = `<img src=${
+      res.photos[0].image.mobile
+    } alt="This is a photo of ${cityName.replace("-", " ")}" />`;
+    gitHiredApp.cityImageUrlObject[cityName] = renderHtml;
+    selectCityImageContainer.append(renderHtml);
+  });
+};
+
 gitHiredApp.githubJobsAjaxCall = cityName => {
   let selectCityContainer = $(`.${cityName} .jobsContainer`);
   gitHiredApp.githubJobsReusableApiCall(cityName).then(res => {
@@ -79,13 +77,10 @@ gitHiredApp.githubJobsAjaxCall = cityName => {
               <p class="company">Company: ${res[i].company}</p>
               <p><a class="button" href=${res[i].url} target="_blank">Apply Here</a></p>
             </div>`;
-
       selectCityContainer.append(renderHtml);
     }
   });
 };
-
-const jobListingContainer = $(".jobListingsContainer");
 
 gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
   gitHiredApp.githubJobsReusableApiCall(selectedSingleCity).then(res => {
@@ -103,12 +98,13 @@ gitHiredApp.handleOnChangeJobDetails = selectedSingleCity => {
   });
 };
 
+// his function calls the teleCityReusableApiCall, with the selected city value we get from the select element, once the promise resolves, then we loop through the results, and append each score category onto the 
 gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
   gitHiredApp
     .teleCityReusableApiCall(selectedSingleCity, "scores")
     .then(res => {
       res.categories.forEach(stat => {
-        $(".scoreCategory").append(`<li>
+        scoreCategory.append(`<li>
         <h3>${stat.name}</h3>
         <p>Score: ${stat.score_out_of_10.toFixed(1)}</p>
         <div class="scoreBar"> 
@@ -130,8 +126,9 @@ gitHiredApp.handleOnChangeCityDetails = selectedSingleCity => {
       </div>
       ${res.summary}`;
       $(".cityDetailsContainer").html(renderHtml);
-      const cityAvgScore = $(".cityAvgScore");
 
+
+      const cityAvgScore = $(".cityAvgScore");
       if (res.teleport_city_score >= 69.5) {
         cityAvgScore.css("color", "#34a853");
       } else if (res.teleport_city_score >= 50) {
@@ -148,7 +145,6 @@ gitHiredApp.reuseableSmoothScroll = selector => {
 };
 
 gitHiredApp.returnSelectedCityValue = () => {
-  const citySelected = $(".citySelect");
   citySelected.on("change", e => {
     $(".showScore").css("display", "block");
     $("html, body").css("overflow", "visible");
@@ -173,7 +169,7 @@ $(".backToTop").on("click", () => {
 });
 
 $(".showScore").on("click", () => {
-  $(".scoreCategory").toggleClass("hidden");
+  scoreCategory.toggleClass("hidden");
 });
 
 $(document).ready(function() {
